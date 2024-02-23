@@ -19,9 +19,12 @@ public class TowerPlace : MonoBehaviour
 	[SerializeField] Color normalColor;
 	[SerializeField] Color highlightColor;
 
+	[SerializeField] InGameUI buildUI;
+
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		Debug.Log("Click");
+		// Debug.Log("Click");
+
 	}
 	public void OnPointerEnter(PointerEventData eventData)
 	{
