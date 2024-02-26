@@ -8,9 +8,9 @@ public class TowerPlace : MonoBehaviour
 	, IPointerClickHandler
 	, IPointerEnterHandler
 	, IPointerExitHandler
-	, IPointerUpHandler
+	/*, IPointerUpHandler
 	, IPointerDownHandler
-	, IPointerMoveHandler
+	, IPointerMoveHandler*/
 {
 
 	// public UnityEvent OnPointerEntered;
@@ -21,24 +21,31 @@ public class TowerPlace : MonoBehaviour
 
 	[SerializeField] InGameUI buildUI;
 
+	[Header("Tower")]
+	[SerializeField] TowerData archorTower;
+	[SerializeField] TowerData cannonTower;
+
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		// Debug.Log("Click");
+		// BuildUI ui = Manager.UI.ShowInGameUI(buildUI);
+		// ui.SetTarget(transform);
+		// ui.SetTowerPlace(this);
 
 	}
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		Debug.Log("Enter");
+		// Debug.Log("Enter");
 		// OnPointerEntered?.Invoke();
 		render.material.color = highlightColor;
 	}
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		Debug.Log("Exit");
+		// Debug.Log("Exit");
 		// OnPointerExited?.Invoke();
 		render.material.color = normalColor;
 	}
-	public void OnPointerUp(PointerEventData eventData)
+	/*public void OnPointerUp(PointerEventData eventData)
 	{
 		Debug.Log("Up");
 	}
@@ -49,5 +56,29 @@ public class TowerPlace : MonoBehaviour
 	public void OnPointerMove(PointerEventData eventData)
 	{
 		// Debug.Log("Move");
+	}*/
+
+	public void BuildTower(string name)
+	{
+		/*if(name == "Archor")
+		{
+			Debug.Log($"{archorTower.buildCost}");
+			Debug.Log($"{archorTower.buildTime}");
+
+			Destroy(gameObject);
+			Instantiate(archorTower, transform.position, transform.rotation);
+		}*/
+		if(name == "Archor")
+		{
+			gameObject.SetActive(false);
+			Tower tower = Instantiate(archorTower.prefab, transform.position, transform.rotation);
+			tower.SetTowerPlace(this);
+		}
+		if (name == "Cannon")
+		{
+			gameObject.SetActive(false);
+			Tower tower = Instantiate(cannonTower.prefab, transform.position, transform.rotation);
+			tower.SetTowerPlace(this);
+		}
 	}
 }

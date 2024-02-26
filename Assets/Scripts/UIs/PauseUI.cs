@@ -12,7 +12,6 @@ public class PauseUI : PopUpUI
 
 		GetUI<Button>("SettingButton").onClick.AddListener(Setting);
 		GetUI<Button>("CloseButton").onClick.AddListener(Close);
-
 	}
 
 	public void Setting()
